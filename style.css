@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none; /*tira-se o estilo de lista com essa propriedade com valor 'none'*/
+}
+
+/*Ajustando as unidades, a conversão de px -> rem
+100% = 16px do navegador -> 62.5% -> 10px -> Pois 62,5/100 = 0.625 X 16 = 10. Agora 1rem = 10px.
+Agora basta dividir meus pixels por 10 que terei a conversão para rem.*/
+:root {
+  font-size: 62.5%; 
+}
+
+body {
+  font-family: 'Epilogue', sans-serif; /*essa é a fonte de todo o body mesmo, aplicando dese agora, geral*/
+  background: #ECE9FD;
+  padding: 6.0rem 2.3rem 6.6rem; /*preenchimento cima laterais e baixo, essas são as medidas alcançadas quando
+  usamos o padding nesse formato de 3 medidas*/
+  font-size: 1.6rem; /*Deixando o body em 16px, mas agora 1.6rem. Medida padrão do navegador.*/
+}
+
+/*Padronizando o main, tipo como se faz com a div class= .page*/
+main {
+  /*vai ficar com essa largura máxima quando for pra uma tela maior*/
+  max-width: 33.0rem; /*largura máxima, está dentro de uma caixa com essa largura no layout, tipo largura da página*/
+  margin: 0 auto; /*alinhando tudo que tem no main ao meio da tela*/
+}
+
+h1 { /*aproveitei fontfamily, fontsize do body*/
+  font-weight: 800; /*como não é 400 que é o padrão, preciso especificar*/
+  font-size: 4.0rem;
+  line-height: 4.8rem;
+
+  color: #090039;
+
+  margin-bottom: 1.5rem; /*distanciando do próximo elemento conforme layout*/
+}
+
+main p:first-child { /*aproveitei font-family, font-size do body*/
+  color:#7158EF;
+  letter-spacing: 3px; /*qndo a unidade é mto pequena devemos deixar em pixel, senão pode dar interferência
+  e ficar sobreposta*/
+  text-transform: uppercase;
+  line-height: 3.2rem;
+
+  margin-bottom: 1.7rem;
+}
+
+/*pegando o 'p' que tem antes dele um 'h1'*/
+h1 + p {/*aproveitei fontfamily, fontsize do body. Font-weight é o mesmo do padrão 400*/
+  color: rgba(10, 0, 57, 0.64);
+  line-height: 3.2rem;
+
+  margin-bottom: 3.2rem; /*espaço para o próximo elemento*/
+
+}
+
+a {/*aproveitando propriedades já definidas no body*/
+  color: #090039;
+  text-decoration: none;
+}
+
+a:hover {
+  font-weight: bold;
+}
+
+ul {
+  margin-top: 7.2rem; /*distanciamento do 'a', preferimos fazer por aqui*/
+}
+
+ul li {
+font-weight: 700;
+font-size: 2.4rem;
+line-height: 3.2rem;
+
+color: #090039;
+
+max-width: 25.7rem; /*esta caixa estava limitada a essa largura no layout.
+Colocamos max para ser o tamanho máximo que ela chega conforme aumenta a tela.
+Para diminuir confortavelmente. Já que o problema é aumentar, a limitação é algo restritivo.*/
+
+display: flex; /*para ajustá-los, estavam desajustados. Já alinou pelo topo pois o align-itens
+do flex default é flex start(alinha pelo top)*/
+
+gap:3.8rem;
+}
+
+ /*pegar todo li que tem antes dele um ul li*/
+ ul li + li {
+  margin-top: 3.2rem; /*não pega o primeiro, e nem quero isso; mas ele já foi definido seu espaço em ul {margin-top: 7.2rem}*/
+}
+
+
+ul li span {
+  font-weight: 800;
+  font-size: 7.2rem;
+  line-height: 8.0rem;
+
+  letter-spacing: -2px; /*qndo a unidade é mto pequena devemos deixar em pixel, senão pode dar interferência
+  e ficar sobreposta*/
+
+  color: #090039;
+ }
+
+@media (min-width:70.0em) { /*minha versão desktop*/
+  body {
+    padding: 8rem; /*espaçamento do top; poderia ter feito com margin-top do main.
+    Mas é preferível configurar isso no body. Além de espaçamento para tudo,
+    pois notei que estava com espaço lateral no celular, porém sem espaço no desktop.
+    Então, definimos aqui que apartir de 700px o padding da página aumenta pra 8rem/80px*/
+  }
+  
+   /*Foi feito no main max-width:33.0rem. Chegando no máximo em 33rem.
+    Ajustando e e então aumentando max-width quando entrar nas telas grandes.*/
+  main {
+   display: flex;
+   gap: 10rem;
+   max-width: 1020px;/*ajustada para a largura da caixa que contém
+   todo o conteúdo, conforme layout. Pode ficar em pixel, ainda está
+   flexível, se trata de largura máxima a ser alcançada.*/
+  }
+
+  main > div {
+    max-width: 484px;
+  }
+
+  ul li {
+    gap: 5.3rem;
+    max-width: 450px;/*fui ajsutando granularmente até ver amedida que deixa tudo em uma linha*/
+    align-items: center;
+  }
+
+ 
+}
+
+
+
+/*Para checar os valores/medidas de um elemento, vá no navegador -> devtools -> element -> computed.*/
+/*FIGMA LAYOUT: https://www.figma.com/file/cNz7S2k7FGU8aaB7q948VD/Explorer-Stage-03-Projeto-02-(Copy)?node-id=203%3A412*/
+
+
+
